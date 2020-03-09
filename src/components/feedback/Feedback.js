@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FeedbackItem from "./feedbackItem/FeedbackItem";
+// import FeedbackItem from "./feedbackItem/FeedbackItem";
 
 class Feedback extends Component {
   state = { good: 0, neutral: 0, bad: 0 };
@@ -20,6 +20,18 @@ class Feedback extends Component {
     this.setState({
       bad: this.state.bad + 1
     });
+  };
+
+  countTotalFeedback = () => {
+    const total = this.state.good + this.state.neutral + this.state.bad;
+    return total;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const percentages = Math.round(
+      (this.state.good / this.countTotalFeedback()) * 100
+    );
+    return percentages;
   };
 
   render() {
@@ -45,10 +57,11 @@ class Feedback extends Component {
               Bad: <span>{this.state.bad}</span>
             </li>
             <li>
-              Total: <span></span>
+              Total: <span>{this.countTotalFeedback()}</span>
             </li>
             <li>
-              Positive feedback: <span></span>%
+              Positive feedback:{" "}
+              <span>{this.countPositiveFeedbackPercentage()}</span>%
             </li>
           </ul>
           {/* <FeedbackItem /> */}
