@@ -37,35 +37,35 @@ class Feedback extends Component {
   render() {
     return (
       <>
-        <div>
-          <h2>Please leave feedback</h2>
+        <h2>Please leave feedback</h2>
 
-          <div>
-            <button onClick={this.goodCalc}>Good</button>
-            <button onClick={this.neutralCalc}>Neutral</button>
-            <button onClick={this.badCalc}>Bad</button>
-          </div>
-          <h2>Statistics</h2>
-          <ul>
-            <li>
-              Good: <span>{this.state.good}</span>
-            </li>
-            <li>
-              Neutral: <span>{this.state.neutral}</span>
-            </li>
-            <li>
-              Bad: <span>{this.state.bad}</span>
-            </li>
-            <li>
-              Total: <span>{this.countTotalFeedback()}</span>
-            </li>
+        <div>
+          <button onClick={this.goodCalc}>Good</button>
+          <button onClick={this.neutralCalc}>Neutral</button>
+          <button onClick={this.badCalc}>Bad</button>
+        </div>
+        <h2>Statistics</h2>
+        <ul>
+          <li>
+            Good: <span>{this.state.good}</span>
+          </li>
+          <li>
+            Neutral: <span>{this.state.neutral}</span>
+          </li>
+          <li>
+            Bad: <span>{this.state.bad}</span>
+          </li>
+          <li>
+            Total: <span>{this.countTotalFeedback()}</span>
+          </li>
+          {this.state.good > 0 && (
             <li>
               Positive feedback:{" "}
-              <span>{this.countPositiveFeedbackPercentage()}</span>%
+              <span>{this.countPositiveFeedbackPercentage()}%</span>
             </li>
-          </ul>
-          {/* <FeedbackItem /> */}
-        </div>
+          )}
+        </ul>
+        {/* <FeedbackItem /> */}
       </>
     );
   }
